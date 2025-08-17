@@ -189,9 +189,13 @@
         并与多模态大模型进行结合，通过高质量描述数据指令微调，给出白盒化归因分析和画质改善建议。落地快手点播、直播场景，指导智能编码、多码率决策下发、审核风控、推荐分发、搜索排序等场景，日均调用2亿次。
     </br></br>
         <b>2. 视频画质增强：</b>针对快手视频的画质问题，基于Transformer设计并实现了多种视频处理算法，包括KEP (Kuaishou Enhanced Processing)/KRP (Kuaishou Restoration Processing)，显著改善了视频画质，让用户看到比作者上传源更清晰的画面，
-        取得了显著的带宽成本节省和App使用时长提升收益。充分拥抱AIGC，进一步自研Diffusion-based <a href="https://mp.weixin.qq.com/s/glv8eavgDlbf6y_3r-kuPg">XPSR</a> 和
-        Autoregressive-based <a href="https://mp.weixin.qq.com/s/TpNHkQk__tnmf88yNsYnLQ">VARSR</a> 的生成式大模型，通过生成能力的改善突破画质上限，结合billion级别的训练数据，取得了令人惊艳的增强修复效果，落地服务端点播场景取得了显著用户时长提升收益，
+        取得了显著的带宽成本节省和App使用时长提升收益。充分拥抱AIGC，进一步自研 <a href="https://mp.weixin.qq.com/s/glv8eavgDlbf6y_3r-kuPg">Diffusion-based增强算法XPSR</a> 和
+        <a href="https://mp.weixin.qq.com/s/TpNHkQk__tnmf88yNsYnLQ">业界首个Autoregressive-based增强算法VARSR</a>，通过生成能力的改善突破画质上限，结合billion级别的训练数据，取得了令人惊艳的增强修复效果，落地服务端点播场景取得了显著用户时长提升收益，
         同时赋能电商、商业化，通过清晰度的提升促进GMV、广告消耗。
+    </br></br>
+        <b>3. AI Infrastructure：</b>大模型的训练上，结合Deepspeed、Megatron等业界主流架构，深度优化DiT结构，实现高效DP/CP/TP等多机多卡分布式训练；部署上，自研多模型单引擎部署方案、Diffusion低精度量化、一致性模型蒸馏等技术，
+        将diffusion模型推理降低至1步，并与NVIDIA展开深度合作，基于TensorRT-LLM、FP8量化等技术大幅提升大模型在视频处理场景下的推理效率，整体加速80+倍，为AI能力的规模化应用提供了坚实的技术基础，显著降低了机器成本、提升了服务的覆盖率。
+        并在GTC2025上进行技术分享：<a href="https://www.nvidia.cn/on-demand/session/gtc25-S74181/">重塑短视频视觉体验：智能视频质量评价与处理大模型</a>。
     </p>
 </div>
 
