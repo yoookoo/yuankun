@@ -213,29 +213,30 @@
                 Github 采集并筛选高质量、多语言（Python、Java、Go、C++等）、多场景（前端、后端、算法、测试等）代码数据，构建十万量级 {task, environment, verifier}
                 三元组数据进行强化学习训练，结合 GRPO/GSPO 算法有效提升了模型在代码生成、补全、修复等任务上的表现。同时，创新性地将多脚手架引入到轨迹的生成中提升真实使用场景的泛化能力，适配了大量黑盒
                 Agent 类型（Claude code, OpenCode, Kilocode等）。最终研发的 <a href="https://codeflicker.corp.kuaishou.com/">KAT
-                    (Kwai Auto-Think)</a> 模型，在主流代码基准上取得了SOTA的性能，并在快手内部研发场景落地，服务超过10000名开发者。
+                    (Kwai Auto-Think)</a> 模型，在主流代码基准上取得了 SOTA 的性能，并在快手内部研发场景落地，服务超过 10000 名开发者。
 
                 </br></br>
                 <b>2. 基于多模态大模型的视频内容理解和基于 AIGC 生成式模型的视频处理：</b> (1) 视频内容理解。基于海量的视频数据+多模态模型训练自研了 <a
-                    href="https://mp.weixin.qq.com/s/8rf-Bm918oCF6OGKTuGEUg">快手视频质量评价体系KVQ</a>，量化视频生产消费链路中诸如编码、处理、传输等过程的画质信息。通过自研
-                <a
-                    href="https://mp.weixin.qq.com/s/qvbwgfcJmO0x_uCV4fMHsQ">QPT系列算法</a>，走通了基于海量无监督数据训练质量感知模型的技术路线，结合高质垂类数据微调，在快手100+垂类场景的表现超过Golden
-                Eye；并引入多模态大模型，通过高质量的指令微调，给出白盒化的归因分析。落地快手点播、直播场景，指导智能编码、多码率决策下发、审核风控、推荐分发、搜索排序等场景，日均调用2亿次。
-                (2) 生成式视频处理。针对快手视频的画质问题，基于Transformer设计并实现了多种视频处理算法，包括KEP (Kuaishou Enhanced Processing)/KRP
+                    href="https://mp.weixin.qq.com/s/8rf-Bm918oCF6OGKTuGEUg">快手视频质量评价体系
+                    KVQ</a>，量化视频生产消费链路中诸如编码、处理、传输等过程的画质信息。通过自研
+                <a href="https://mp.weixin.qq.com/s/qvbwgfcJmO0x_uCV4fMHsQ">QPT
+                    系列算法</a>，走通了基于海量无监督数据训练质量感知模型的技术路线，结合高质垂类数据微调，在快手 100+ 垂类场景的表现超过 Golden
+                Eye；并引入多模态大模型，通过高质量的指令微调，给出白盒化的归因分析。落地快手点播、直播场景，指导智能编码、多码率决策下发、审核风控、推荐分发、搜索排序等场景，日均调用 2 亿次。
+                (2) 生成式视频处理。针对快手视频的画质问题，基于 Transformer 设计并实现了多种视频处理算法，包括 KEP (Kuaishou Enhanced Processing)/KRP
                 (Kuaishou Restoration Processing)，显著改善了视频画质，让用户看到比作者上传源更清晰的画面。进一步自研 <a
-                    href="https://mp.weixin.qq.com/s/glv8eavgDlbf6y_3r-kuPg">Diffusion-based增强算法XPSR</a> 和
-                <a
-                    href="https://mp.weixin.qq.com/s/TpNHkQk__tnmf88yNsYnLQ">业界首个Autoregressive-based增强算法VARSR</a>，通过生成能力的改善突破画质上限，结合亿级别的训练数据，取得了令人惊艳的增强修复效果，落地服务端点播场景取得了显著用户时长提升收益，
-                同时赋能电商、商业化，通过清晰度的提升促进GMV、广告消耗。
+                    href="https://mp.weixin.qq.com/s/glv8eavgDlbf6y_3r-kuPg">Diffusion-based 增强算法 XPSR</a> 和
+                <a href="https://mp.weixin.qq.com/s/TpNHkQk__tnmf88yNsYnLQ">业界首个 Autoregressive-based 增强算法
+                    VARSR</a>，通过生成能力的改善突破画质上限，结合亿级别的训练数据，取得了令人惊艳的增强修复效果，落地服务端点播场景取得了显著用户时长提升收益，
+                同时赋能电商、商业化，通过清晰度的提升促进 GMV、广告消耗。
 
                 </br></br>
                 <b>3. AI Infrastructure：</b> (1) RL infrastructure。针对大语言模型训练，基于 Megatron 和 SGlang
                 搭建了高效的分布式强化学习训练平台，探索最优的
                 TP/PP/CP/EP 组合方式，支持稳定高效的千卡训练。同时，基于快手完善的容器云平台，实现万级别的沙箱并发，通过预先镜像编译缩短了冷启动时间，
                 并在任务完成后及时销毁，有效支持了 Agentic Coding 的快速迭代。
-                (2) AIGC 模型推理优化。针对视频生成模型推理，自研多模型单引擎部署方案、Diffusion低精度量化、一致性模型蒸馏等技术，将diffusion模型推理降低至1步，
-                并与NVIDIA展开深度合作，基于TensorRT-LLM、FP8量化等技术大幅提升大模型在视频处理场景下的推理效率，整体加速80+倍，为AI能力的规模化应用提供了坚实的技术基础，
-                显著降低了机器成本、提升了服务的覆盖率。并在GTC2025上进行技术分享：<a
+                (2) AIGC 模型推理优化。针对视频生成模型推理，自研多模型单引擎部署方案、Diffusion 低精度量化、一致性模型蒸馏等技术，将 diffusion 模型推理降低至 1 步，
+                并与 NVIDIA 展开深度合作，基于 TensorRT-LLM、FP8 量化等技术大幅提升大模型在视频处理场景下的推理效率，整体加速 80+ 倍，为 AI 能力的规模化应用提供了坚实的技术基础，
+                显著降低了机器成本、提升了服务的覆盖率。并在 GTC2025 上进行技术分享：<a
                     href="https://www.nvidia.cn/on-demand/session/gtc25-S74181/">重塑短视频视觉体验：智能视频质量评价与处理大模型</a>。
             </p>
         </div>
