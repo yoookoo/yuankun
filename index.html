@@ -133,7 +133,6 @@
 
     <div id="layout-content" style="margin-top:25px">
 
-
         <table style="width: 100%;">
             <tbody>
                 <tr>
@@ -148,9 +147,11 @@
                         <p style="line-height: 1.6;">
                             Kuaishou Technology<br><br>
 
-                            <b>Research Interests:</b> Agentic Large Language Models, Diffusion-based Video Generation,
-                            Large-scale AI/RL Infrastructure<br>
+                            <b>Research Interests:</b> <i>Large Language Models, Agentic Coding, Reinforcement Learning,
+                                Diffusion-based Video Generation, Large-scale AI/RL Infrastructure</i><br>
                             <b>Email:</b> <a href="mailto:yuankunbupt@gmail.com">yuankunbupt at gmail dot com</a><br>
+                            <b>Wechat:</b> yuankun_casia
+
                             <br>
                             [<a href="https://scholar.google.com/citations?user=fCeZ32EAAAAJ&hl=zh-CN">Google
                                 Scholar</a>]
@@ -202,39 +203,49 @@
 
         <div style="display: flex; margin-bottom: -10px">
             <p style="font-size: 14px;">
-                自2021年加入快手，在人工智能前沿领域持续探索。近期致力于大语言模型（LLM）的后训练与 Agentic AI
-                的研发；在此之前，深耕于音视频与AI的结合，专注于提升快手视频的整体画质与用户体验。核心工作包括：
+                自 2021 年加入快手，在人工智能和大模型领域持续探索，工作经历包含三个方面：
+                (1) 大语言模型后训练与 Agentic LLM 开发；
+                (2) 基于多模态大模型的视频内容理解和基于 AIGC 生成式模型的视频处理；
+                (3) AI Infrastructure，包括强化学习训练平台和大模型推理性能优化。
+
                 </br></br>
-                <b>1. 视频质量评估：</b>基于海量的视频数据+AI大模型训练自研了 <a
-                    href="https://mp.weixin.qq.com/s/8rf-Bm918oCF6OGKTuGEUg">快手视频质量评价体系KVQ</a>，量化视频生产消费链路中诸如编码、处理、传输等过程的画质损失，提供准确的客观质量评价。
-                通过自研 <a
+                <b>1. 大语言模型后训练与 Agentic LLM 开发：</b> 通过强化学习后训练提升大模型（千亿参数量）在代码场景（SWE, Software Engineering）的能力。引入自动化流程持续从
+                Github 采集并筛选高质量、多语言（Python、Java、Go、C++等）、多场景（前端、后端、算法、测试等）代码数据，构建十万量级 {task, environment, verifier}
+                三元组数据进行强化学习训练，结合 GRPO/GSPO 算法有效提升了模型在代码生成、补全、修复等任务上的表现。同时，创新性地将多脚手架引入到轨迹的生成中提升真实使用场景的泛化能力，适配了大量黑盒
+                Agent 类型（Claude code, OpenCode, Kilocode等）。最终研发的 <a href="https://codeflicker.corp.kuaishou.com/">KAT
+                    (Kwai Auto-Think)</a> 模型，在主流代码基准上取得了SOTA的性能，并在快手内部研发场景落地，服务超过10000名开发者。
+
+                </br></br>
+                <b>2. 基于多模态大模型的视频内容理解和基于 AIGC 生成式模型的视频处理：</b> (1) 视频内容理解。基于海量的视频数据+多模态模型训练自研了 <a
+                    href="https://mp.weixin.qq.com/s/8rf-Bm918oCF6OGKTuGEUg">快手视频质量评价体系KVQ</a>，量化视频生产消费链路中诸如编码、处理、传输等过程的画质信息。通过自研
+                <a
                     href="https://mp.weixin.qq.com/s/qvbwgfcJmO0x_uCV4fMHsQ">QPT系列算法</a>，走通了基于海量无监督数据训练质量感知模型的技术路线，结合高质垂类数据微调，在快手100+垂类场景的表现超过Golden
-                Eye；
-                并与多模态大模型进行结合，通过高质量描述数据指令微调，给出白盒化归因分析和画质改善建议。落地快手点播、直播场景，指导智能编码、多码率决策下发、审核风控、推荐分发、搜索排序等场景，日均调用2亿次。
-                </br></br>
-                <b>2. 视频画质增强：</b>针对快手视频的画质问题，基于Transformer设计并实现了多种视频处理算法，包括KEP (Kuaishou Enhanced Processing)/KRP
-                (Kuaishou Restoration Processing)，显著改善了视频画质，让用户看到比作者上传源更清晰的画面，
-                取得了显著的带宽成本节省和App使用时长提升收益。充分拥抱AIGC，进一步自研 <a
+                Eye；并引入多模态大模型，通过高质量的指令微调，给出白盒化的归因分析。落地快手点播、直播场景，指导智能编码、多码率决策下发、审核风控、推荐分发、搜索排序等场景，日均调用2亿次。
+                (2) 生成式视频处理。针对快手视频的画质问题，基于Transformer设计并实现了多种视频处理算法，包括KEP (Kuaishou Enhanced Processing)/KRP
+                (Kuaishou Restoration Processing)，显著改善了视频画质，让用户看到比作者上传源更清晰的画面。进一步自研 <a
                     href="https://mp.weixin.qq.com/s/glv8eavgDlbf6y_3r-kuPg">Diffusion-based增强算法XPSR</a> 和
                 <a
-                    href="https://mp.weixin.qq.com/s/TpNHkQk__tnmf88yNsYnLQ">业界首个Autoregressive-based增强算法VARSR</a>，通过生成能力的改善突破画质上限，结合billion级别的训练数据，取得了令人惊艳的增强修复效果，落地服务端点播场景取得了显著用户时长提升收益，
+                    href="https://mp.weixin.qq.com/s/TpNHkQk__tnmf88yNsYnLQ">业界首个Autoregressive-based增强算法VARSR</a>，通过生成能力的改善突破画质上限，结合亿级别的训练数据，取得了令人惊艳的增强修复效果，落地服务端点播场景取得了显著用户时长提升收益，
                 同时赋能电商、商业化，通过清晰度的提升促进GMV、广告消耗。
+
                 </br></br>
-                <b>3. AI
-                    Infrastructure：</b>大模型的训练上，结合Deepspeed、Megatron等业界主流架构，深度优化DiT结构，实现高效DP/CP/TP等多机多卡分布式训练；部署上，自研多模型单引擎部署方案、Diffusion低精度量化、一致性模型蒸馏等技术，
-                将diffusion模型推理降低至1步，并与NVIDIA展开深度合作，基于TensorRT-LLM、FP8量化等技术大幅提升大模型在视频处理场景下的推理效率，整体加速80+倍，为AI能力的规模化应用提供了坚实的技术基础，显著降低了机器成本、提升了服务的覆盖率。
-                并在GTC2025上进行技术分享：<a
+                <b>3. AI Infrastructure：</b> (1) RL infrastructure。针对大语言模型训练，基于 Megatron 和 SGlang
+                搭建了高效的分布式强化学习训练平台，探索最优的
+                TP/PP/CP/EP 组合方式，支持稳定高效的千卡训练。同时，基于快手完善的容器云平台，实现万级别的沙箱并发，通过预先镜像编译缩短了冷启动时间，
+                并在任务完成后及时销毁，有效支持了 Agentic Coding 的快速迭代。
+                (2) AIGC 模型推理优化。针对视频生成模型推理，自研多模型单引擎部署方案、Diffusion低精度量化、一致性模型蒸馏等技术，将diffusion模型推理降低至1步，
+                并与NVIDIA展开深度合作，基于TensorRT-LLM、FP8量化等技术大幅提升大模型在视频处理场景下的推理效率，整体加速80+倍，为AI能力的规模化应用提供了坚实的技术基础，
+                显著降低了机器成本、提升了服务的覆盖率。并在GTC2025上进行技术分享：<a
                     href="https://www.nvidia.cn/on-demand/session/gtc25-S74181/">重塑短视频视觉体验：智能视频质量评价与处理大模型</a>。
-                </br></br>
-                <b>4. LLM Post-training 与 Agentic
-                    AI：</b>自2025年10月起，工作重心从基于Diffusion的AIGC转向大语言模型（LLM）的后训练（Post-training）。主要通过强化学习（RL）等机制大幅提升模型的
-                Agentic Coding 能力与复杂推理能力，主导研发了 <b>KAT (Kuaishou Auto-Think)</b> 模型，探索通用人工智能在代码生成与自主智能体场景下的前沿落地。
             </p>
         </div>
 
         <h2>News</h2>
 
         <ul>
+            <li>
+                <div class="marker">[2026-03] One paper accepted by CVPR 2026.</div>
+            </li>
             <li>
                 <div class="marker">[2025-05] One paper accepted by ICML 2025.</div>
             </li>
@@ -286,6 +297,22 @@
             Publications
             <span style="font-size: 50%;">(* denotes equal contribution, # denotes corresponding author)</span>
         </h2>
+
+        <div class="newline_bg">
+            <h3>2026</h3>
+        </div>
+
+        <div class="publication_container scene_generation">
+            <div class="publication_image">
+                <img src="paper_teaser/CVPR2026/qptv3.png">
+            </div>
+            <div class="publication_title">
+                Bridging Video Quality Scoring and Justification via Large Multimodal Models</br>
+                Qizhi Xie, <b>Kun Yuan#</b>, Yunpeng Qu, Jiachao Gong, Mingda Wu, Ming Sun, Jihong Zhu</br>
+                IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026.</br>
+                [<a href="https://arxiv.org/abs/2506.21011">Paper</a>]
+            </div>
+        </div>
 
         <div class="newline_bg">
             <h3>2025</h3>
