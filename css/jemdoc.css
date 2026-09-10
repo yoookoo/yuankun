@@ -233,6 +233,7 @@ ul {
 
 ul li {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
 }
@@ -519,4 +520,24 @@ sup {
 	border: 1px solid #d6d2d2;
 	border-radius: 5px;
 	transition: background-color 0.3s, border-color 0.3s;
+}
+/* ---------- News 内的 KAT-Coder-V2.5-Dev 下载量（独立块级 div，与 .marker 平级） ---------- */
+
+.kat-stats {
+	/* li 是 display:flex 行布局，用 flex: 0 0 100% 把 kat-stats 挤到下一行 */
+	flex: 0 0 calc(100% - 22px);
+	box-sizing: border-box;
+	margin: 2px 0 0 22px;
+	font-size: 100%;
+	line-height: 1.65;
+	color: #6f6f6f;
+}
+
+.kat-chip {
+	white-space: nowrap;
+}
+
+.kat-sep {
+	padding: 0 6px;
+	color: #cfcfcf;
 }

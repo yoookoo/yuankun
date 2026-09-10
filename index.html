@@ -30,7 +30,10 @@
             var showText = document.getElementById("showText");
             for (var i = 0; i < e.length; i++) {
                 if (e[i].style.display == "none") {
-                    e[i].style.display = "inline";
+                    // 置空 -> 回退到样式表里的 display:flex。
+                    // 不能用 list-item：会额外生成 ul 的 square 列表标记，
+                    // 与 .marker::before 的方块重复（展开后每条会出现两个方块）。
+                    e[i].style.display = "";
                     showText.innerHTML = "[Show less]";
                 } else {
                     e[i].style.display = "none";
@@ -257,6 +260,16 @@
 
         <ul>
             <li>
+                <div class="marker">[2026-07] KAT-Coder-V2.5-Dev released in Huggingface.</div>
+                <div class="kat-stats" data-kat-downloads>
+                    <span class="kat-chip"><span data-kat-stat="ecosystem-downloads">2,506,410</span> ecosystem downloads</span>
+                    <span class="kat-sep">·</span>
+                    <span class="kat-chip"><span data-kat-stat="model-downloads">64,046</span> HuggingFace downloads</span>
+                    <span class="kat-sep">·</span>
+                    <span class="kat-chip"><span data-kat-stat="model-likes">633</span> likes</span>
+                </div>
+            </li>
+            <li>
                 <div class="marker">[2026-07] KAT-Coder-V2.5 released.</div>
             </li>
             <li>
@@ -269,9 +282,7 @@
                 <div class="marker">[2025-05] One paper accepted by ICML 2025.</div>
             </li>
             <li>
-                <div class="marker">[2025-03] I give a talk at Nvidia GTC 2025 about "Redefining Visual Experience of
-                    Short-form Videos: Accelerating Large Models for Intelligent Video Quality Assessment and Processing
-                    by TensorRT-LLM".</div>
+                <div class="marker">[2025-03] I give a talk at Nvidia GTC 2025.</div>
             </li>
             <li>
                 <div class="marker">[2025-03] One paper accepted by CVPR 2025.</div>
@@ -279,31 +290,31 @@
             <li>
                 <div class="marker">[2024-07] Two papers accepted by ACM MM 2024.</div>
             </li>
-            <li>
+            <li class="news" style="display: none;">
                 <div class="marker">[2024-07] One paper accepted by ECCV 2024.</div>
             </li>
-            <li>
+            <li class="news" style="display: none;">
                 <div class="marker">[2024-03] Two papers accepted by CVPR 2024.</div>
             </li>
-            <li>
+            <li class="news" style="display: none;">
                 <div class="marker">[2023-10] Two papers accepted by ACM MM 2023.</div>
             </li>
-            <li>
+            <li class="news" style="display: none;">
                 <div class="marker">[2023-03] One paper accepted by CVPR 2023.</div>
             </li>
-            <li>
+            <li class="news" style="display: none;">
                 <div class="marker">[2022-03] One paper accepted by CVPR 2022.</div>
             </li>
-            <li>
+            <li class="news" style="display: none;">
                 <div class="marker">[2021-02] One paper accepted by ICLR 2021.</div>
             </li>
-            <li>
+            <li class="news" style="display: none;">
                 <div class="marker">[2021-02] Two papers accepted by ICCV 2021.</div>
             </li>
-            <li>
+            <li class="news" style="display: none;">
                 <div class="marker">[2020-08] One paper accepted by ECCV 2020.</div>
             </li>
-            <li>
+            <li class="news" style="display: none;">
                 <div class="marker">[2018-07] One paper accepted by IJCAI 2018.</div>
             </li>
         </ul>
@@ -353,7 +364,21 @@
             </div>
         </div>
 
-        <div class="publication_container scene_generation">
+                <div class="publication_container scene_generation">
+            <div class="publication_image">
+                <img src="paper_teaser/TechReport/bpm.jpg">
+            </div>
+            <div class="publication_title">
+                Cross-Tokenizer On-Policy Distillation via Byte-Prefix Marginalization</br>
+                Hao Wang, <b>Kun Yuan#</b>, Wenlin Zhong, Minglei Zhang, Han Xiao, Ming Sun, Honggang Qi</br>
+                * <i>Using MiniMax and GLM as teachers to improve Qwen students by 3.7-6.6 points across six math and coding benchmarks</i></br>
+                Technical Report, 2026.</br>
+                [<a href="https://arxiv.org/abs/2607.22334">Paper</a>]
+                [<a href="https://bpm-opd.github.io/">Project Page</a>]
+            </div>
+        </div>
+
+<div class="publication_container scene_generation">
             <div class="publication_image">
                 <img src="paper_teaser/CVPR2026/qptv3.png">
             </div>
@@ -691,24 +716,26 @@
             </div>
         </div>
 
-        <h2>Awards</h2>
+        <h2>Education &amp; Experience</h2>
 
         <ul>
             <li>
-                <div class="marker">快手研发线优秀项目奖:“基于Transformer的视频处理模型研究与落地”</div>
-                <div>2024</div>
+                <div class="marker">Kuaishou Technology, Foundation Models Department</div>
+                <div>2021 - 2026</div>
             </li>
             <li>
-                <div class="marker">快手洛子峰奖:“KVQ:基于 AI 的视频质量评价”</div>
-                <div>2023</div>
+                <div class="marker">SenseTime, Research Institute</div>
+                <div>2018 - 2021</div>
             </li>
             <li>
-                <div class="marker">快手洛子峰奖:“基于主观的智能视频增强与编解码架构联合优化”</div>
-                <div>2023</div>
+                <div class="marker">Institute of Automation, Chinese Academy of Sciences</div>
+                <div>2015 - 2018</div>
             </li>
-        </ul>
-
-    </div>
+            <li>
+                <div class="marker">Beijing University of Posts and Telecommunications</div>
+                <div>2011 - 2015</div>
+            </li>
+        </ul>    <script src="js/kat-downloads.js"></script>
 </body>
 
 </html>
