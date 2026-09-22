@@ -216,8 +216,8 @@
                 </br></br>
                 <b>1. 大语言模型后训练与 Agentic LLM 开发：</b> 通过强化学习后训练提升大模型（千亿参数量）在代码场景（SWE, Software Engineering）的能力。引入自动化流程持续从
                 Github 采集并筛选高质量、多语言（Python、Java、Go、C++等）、多场景（前端、后端、算法、测试等）代码数据，构建十万量级 {task, agent, tools, environment,
-                verifier} 五元组数据进行强化学习训练，结合 GRPO/GSPO
-                算法有效提升了模型在代码生成、补全、修复等任务上的表现。同时，创新性地将多脚手架引入到轨迹的生成中提升真实使用场景的泛化能力，适配了大量黑盒
+                verifier} 五元组数据进行强化学习训练，结合 GRPO/GSPO 算法，优化长程任务信用分配、探索性消失、Agentic Scaling 等问题，
+                有效提升了模型在代码生成、补全、修复等任务上的表现。同时，创新性地将多脚手架引入到轨迹的生成中提升真实使用场景的泛化能力，适配了大量黑盒
                 Agent 类型（Claude code, OpenCode, Kilocode等）。最终研发的 <a href="https://codeflicker.corp.kuaishou.com/">KAT
                     (Kwai Auto-Think)</a> 模型，在 SWE-bench-verified & Multilingual 数据集上取得接近 Claude Opus 4.6
                 的效果，并在Artificial Analysis Coding Index榜单上取得国内模型的第一位 (2026/03/31)。
@@ -232,22 +232,20 @@
                 (1) 基于快手亿级别视频数据+多模态模型研发了快手视频质量评价体系
                 <a href="https://mp.weixin.qq.com/s/8rf-Bm918oCF6OGKTuGEUg">KVQ (Kwai Visual Quality)</a>，通过自研
                 <a href="https://mp.weixin.qq.com/s/qvbwgfcJmO0x_uCV4fMHsQ">QPT (Quality-aware Pre-training) 系列算法</a>
-                走通了基于海量无监督数据训练质量感知大模型的技术路线。结合高质量人工标注数据微调，在快手 100+ 垂类场景表现超过 Golden
-                Eye，并能够给出白盒化内容理解和画质改善建议。落地快手视频生产消费全链路，指导智能编码、审核风控、搜索推荐等场景，日均调用 2 亿次。
+                建立基于海量无监督视频数据预训练、语义与质量联合表征学习、高质量人工数据微调的技术路线。模型能够理解视频中的主体、语义、时序变化和视觉退化等信息，在
+                快手 100+ 垂类场景表现超过 Golden Eye，并能够给出白盒化内容理解和画质改善建议。落地快手视频生产消费全链路，服务于智能编码、审核风控、搜索推荐等场景，日均调用 2 亿次。
 
-                (2) 生成式视频处理。基于快手私域和公域亿级别极高画质数据，通过改进 Rectified-Flow DiT 模型结构，结合时序一致性约束，
-                全量落地业界首个基于生成式的视频处理模型 Kwai LPM (Large Processing Model) (开源版本
-                <a href="https://mp.weixin.qq.com/s/glv8eavgDlbf6y_3r-kuPg"> XPSR</a>，
-                <a href="https://mp.weixin.qq.com/s/TpNHkQk__tnmf88yNsYnLQ">VARSR</a>)，
-                在人像、风景、影视等领域取得了惊艳的增强修复效果。改善了快手短视频画质和用户体验，取得了显著的用户播放时长提升；
+                (2) 生成式视频处理与长时序一致性。基于快手私域和公域亿级别极高质图像、视频数据，通过改进 Rectified-Flow DiT 模型结构，引入长时序一致性约束，实现对视频空间细节与时间连续性的连续建模，
+                同时解耦空域与时序的计算逻辑，显著提升推理效率。全量落地业界首个基于生成式的视频处理模型 <a href="https://arxiv.org/abs/2607.13460">Kwai LPM (Large Processing Model)</a>。
+                模型在人像、风景、影视等领域取得了惊艳的增强修复效果，支持长大小时级别的视频一致性生成。改善了快手短视频画质和用户体验，取得了显著的用户播放时长提升；
                 同时结合电商、商业化应用，通过清晰度的改善促进了 GMV 营收提升和广告消耗。
 
                 </br></br>
                 <b>3. 大规模训练推理 AI Infrastructure：</b>
 
-                (1) 训练 infra。 针对大语言模型训练，基于 Megatron 和 SGlang
-                搭建了高效的分布式强化学习训练平台，探索千亿级别参数 MoE 模型最优 parallel 配置，稳定训练千卡 Blackwell GPU
-                任务。同时基于快手完善的容器云平台，实现万级别沙箱并发，通过镜像预编译和运行后销毁，有效支持了模型的快速迭代。
+                (1) 训练 infra。 基于 Megatron 和 SGLang 搭建分布式强化学习训练平台，完成千亿参数级 MoE 模型的并行策略设计与性能优化，
+                支持 512 张 Blackwell GPU 稳定训练；围绕轨迹生成、异步推理、策略训练和自动评测构建端到端闭环。
+                基于快手容器云平台搭建万级并发隔离执行环境，通过镜像预编译、环境快速拉起和任务结束自动销毁，支持智能体在不同任务、工具和环境中的大规模并行探索。
 
                 (2) 推理 infra。 针对 Diffusion-based 视频处理模型，自研多模型单引擎部署方案、SageAttention、一致性模型蒸馏等技术，将 DiT 模型推理从 25 步降低至 1
                 步。同时与NVIDIA 展开深度合作，基于 TensorRT-LLM、FP8 量化等技术大幅提升大模型在视频处理场景下的效率，整体加速 80+ 倍。并在 GTC2025
@@ -392,6 +390,20 @@
 
         <div class="newline_bg">
             <h3>2025</h3>
+        </div>
+
+        <div class="publication_container scene_generation">
+            <div class="publication_image">
+                <img src="paper_teaser/TechReport/lpm.png">
+            </div>
+            <div class="publication_title">
+                LPM: Industrial-Scale Generative Video Restoration</br>
+                KwaiLPM Team</br>
+                * <i>First generative video restoration model deployed at industrial scale, over SeedVR2 and Vivid-VR</i></br>
+                * <i>Covering 45% of total viewing time in Kuaishou App, reducing bitrate by 20%</i></br>
+                Technical Report, 2025.</br>
+                [<a href="https://arxiv.org/pdf/2607.13460">Paper</a>]
+            </div>
         </div>
 
         <div class="publication_container scene_generation">
